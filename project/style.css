@@ -1,11 +1,24 @@
+/* ================ Сбросс стилей ================ */
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+/* ================ Общие стили ================ */
+
+html, body {
+    font-family: 'Rubik', sans-serif;
+    font-style: normal;
+}
+
 a {
     text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;  /* ссылки: при наведении добавим им подчеркивание*/
 }
 
 ul {
@@ -15,25 +28,55 @@ ul {
 button {
     border: none;
     background-color: transparent;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-header {
-    background-color: #0A61F7;
-    padding: 14px 0;
+button:hover{
+    transform: translateY(-5px);
 }
 
-html, body {
-    font-family: 'Rubik', sans-serif;
+.title {
+    color: #363940;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 43px; /* 134.375% */
 }
 
-
-header {
-    background-color: #0A61F7;
+.text {
+    color: #95A1BB;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px; /* 137.5% */
+    /*margin-bottom: 40px; !*присвоим каждой секции совй маржин батон*!*/
 }
+
+.container { /* Это стандартные стили для контейнера. Может меняться только max-width и padding */
+    height: 100%;
+    width: 100%;
+    max-width: 1170px; /* 1140 Figma + padding 15*2 */
+    padding: 0 15px; /* отступы по бокам на мобилкам */
+    margin-left: auto; /* центрируем по горизонтали */
+    margin-right: auto; /* центрируем по горизонтали */
+    border: 1px solid red /* чтобы было его видно, потом удалим */
+}
+
+/*/=================== стили для header`a =================/*/
 
 .header {
     background-color: #0A61F7;
     padding: 14px 0;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    gap: 24px;
 }
 
 .menu-link { /* скопировали из фигмы, удалили ненужное*/
@@ -45,6 +88,15 @@ header {
     text-transform: uppercase;
 }
 
+/*/=================== стили для 1ой секции =================/*/
+
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+}
+
 .main-title {
     color: #363940;
     font-size: 58px;
@@ -53,17 +105,18 @@ header {
     margin-bottom: 30px;
 }
 
-.text {
-    color: #95A1BB;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 22px; /* 137.5% */
-    /*margin-bottom: 40px; присвоим каждой секции совй маржин батон*/
+.main .text {
+    margin-bottom: 40px;
+    max-width: 380px;
+}
+
+.main-img {
+    align-self: flex-end; /* прижали картинку к нижнему краю родителя */
 }
 
 .button {
     width: 152px;
-    height: 50px;
+    height: 51px;
     border-radius: 4px;
     background: #0A61F7;
     font-size: 14px;
@@ -74,31 +127,32 @@ header {
     text-transform: uppercase;
 }
 
+/*/=================== стили для 2ой секции =================/*/
+
 .rates-section {
     background-color: #F9FAFC;
     padding: 100px 0;
 }
 
-.rates-section.title {
+.rates-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rates-section .title {
     margin-bottom: 20px; /*для заголовка title в конкретной секции будем добавлять к этим стилям свой отступ*/
 }
 
-.rates-section.text {
+.rates-section .text {
     margin-bottom: 40px;
-}
-
-.title {
-    color: #363940;
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 43px; /* 134.375% */
 }
 
 .table {
     border-collapse: collapse; /*убираем отступы между границами таблицы*/
 }
 
-th, td {
+th, td {  /* Стилизуем по названию тега */
     border: 1px solid #95A1BB;
     width: 240px;
     padding: 15px 0;
@@ -122,7 +176,7 @@ th, td {
 }
 
 .table-subtitle.gray {
-    color: #95A1BB;
+    color: #95A1BB;  /* стиль применится, если у элемента будут эти оба класса */
 }
 
 .table-link {
@@ -143,24 +197,31 @@ th, td {
 }
 
 
-.table-button.active {
+.table-button.active {  /* эти свойства применятся, если у кнопки будут оба класса */
     background: #0A61F7;
     color: #FFF;
 }
 
 .table-footer td {
-    padding: 30px;
+    padding: 30px 0;
 }
+
+/*/=================== стили для 3кй секции =================/*/
 
 .create-account-section {
     padding: 100px 0;
 }
 
-.create-account-section.title {
+.account-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-account-section .title {
     margin-bottom: 50px; /*для заголовка в конкретной секции будем добавлять к этим стилям title свой отступ*/
 }
 
-.create-account-section.text {
+.create-account-section .text {
     margin-bottom: 40px;
     max-width: 500px;
 }
@@ -169,7 +230,15 @@ th, td {
     list-style-image: url("./assets/images/Check.svg");
     margin-left: 30px;
     margin-bottom: 15px;
-    color: #363940;;
+    color: #363940;
+}
+
+form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 input, select, fieldset, textarea {
@@ -186,9 +255,30 @@ input, select, fieldset, textarea, label, legend, input::placeholder, select::pl
     font-family: inherit;
 }
 
+input[type="text"] { /*зададим полям ввода правильные размеры. обратиться по атрибуту*/
+    width: 100%;
+}
+
 input[type="email"], input[type="password"], input[type="date"], select {
     width: 230px;
     height: 50px;
+    flex-grow: 1;
+}
+
+input[type="radio"], input[type="checkbox"], input[type="date"], select{
+    cursor: pointer;
+}
+
+.stack,
+fieldset {
+    display: flex;
+    column-gap: 30px;
+}
+
+.fields-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* будут скидываться вниз если не помещаются в родителе*/
+    gap: 20px;
 }
 
 fieldset {
@@ -202,7 +292,7 @@ textarea {
     resize: none; /*   уберем возможность изменять размер <textarea>*/
 }
 
-form.button {
+form .button {
     width: 100%;
 }
 
@@ -215,6 +305,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background: url("./assets/images/Calendar.svg") no-repeat;
 }
 
+/* ========================= Стили для футера ============================= */
+
 .footer {
     background-color: #0A61F7;
     text-align: center;
@@ -222,8 +314,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 small {
-    color: #FFF;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px; /* 157.143% */
+    color: #FFF;
 }
